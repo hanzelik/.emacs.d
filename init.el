@@ -190,25 +190,6 @@
   :config
   (modus-themes-load-vivendi))
 
-;; (use-package gruvbox-theme
-;;   :config
-;;   (load-theme 'gruvbox t))
-
-;; (use-package dracula-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'dracula t))
-
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'zenburn t))
-
-;; (use-package afternoon-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'afternoon t))
-
 ;; (use-package spacemacs-theme
 ;;   :defer t
 ;;   :init
