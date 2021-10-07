@@ -157,7 +157,7 @@
   :init (dired-async-mode 1))
 
 (use-package diminish
-  :ensure t) 
+  :ensure t)
 
 (use-package linum-relative
   :ensure t
