@@ -143,6 +143,13 @@
   :config
   (global-hl-line-mode +1))
 
+(use-package org
+  :config
+  (setq org-src-preserve-indentation t)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((C . t))))
+
 ;; Beginning of user-added packages
 (use-package async
   :ensure t
