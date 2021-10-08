@@ -223,7 +223,9 @@
    "k" 'kill-buffer
    "i" 'imenu
    "p" 'projectile-find-dir
-   "m" 'magit-status)
+   "m" 'magit-status
+   "s" 'split-window-vertically
+   "v" 'split-window-right)
   (evil-leader/set-key-for-mode 'rustic-mode
     "y" 'lsp-ui-peek-find-definitions
     "u" 'lsp-ui-peek-find-references)
