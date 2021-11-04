@@ -220,7 +220,7 @@
   (evil-leader/set-key
    "f" 'find-file
    "b" 'switch-to-buffer
-   "k" 'kill-buffer
+   "k" 'kill-this-buffer
    "i" 'imenu
    "p" 'projectile-find-dir
    "m" 'magit-status
