@@ -260,6 +260,7 @@
 (use-package sly
   :ensure t
   :config
+  (setq inferior-lisp-program "/usr/bin/sbcl")
   (setq sly-lips-implementations
 	'(sbcl ("/usr/bin/sbcl"))))
 
