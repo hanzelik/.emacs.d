@@ -1,6 +1,6 @@
 ;;; init.el --- Hanzelik's Emacs Configuration -*- lexical-binding: t; -*-
 ;;
-;; Copyright (c) 2021 Matthew Hanzelik
+;; Copyright (c) 2024 Matthew Hanzelik
 ;;
 ;; Author: Matthew Hanzelik <mrhanzelik@gmail.com>
 ;; URL: https://github.com/hanzelik/emacs.d
@@ -70,6 +70,12 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Set scratch buffer major mode to org-mode instead of emacs-lisp
+(setq initial-major-mode 'org-mode)
+
+;; Set the scartch buffer message at start
+(setq initial-scratch-message "#+TITLE: ")
+
 ;; Disable blinking cursor
 (blink-cursor-mode -1)
 
@@ -118,8 +124,8 @@
 (put 'erase-buffer 'disabled nil)
 
 ;; Change the global font to Terminus
-(add-to-list 'default-frame-alist '(font . "Terminus 12"))
-(set-face-attribute 'default nil :font "Terminus 12")
+;;(add-to-list 'default-frame-alist '(font . "Terminus 12"))
+;;(set-face-attribute 'default nil :font "Terminus 12")
 
 ;; Enable if graphical issues on startup
 ;; (add-hook 'after-init-hook 'redraw-display)
@@ -145,12 +151,18 @@
 
 (use-package org
   :config
-  (setq org-src-preserve-indentation t)
+  (setq org-src-preserve-indentation t
+	org-hide-leading-stars t)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((C . t))))
 
 ;; Beginning of user-added packages
+;; (use-package org-modern
+;;   :ensure t
+;;   :config
+;;   (with-eval-after-load 'org (global-org-modern-mode)))
+
 (use-package async
   :ensure t
   :diminish async-mode
@@ -159,12 +171,10 @@
 (use-package diminish
   :ensure t)
 
-(use-package linum-relative
-  :ensure t
-  :diminish linum-relative-mode
+(use-package display-line-numbers
   :config
-  (setq linum-relative-backend 'display-line-numbers-mode)
-  (linum-relative-global-mode))
+  (setq display-line-numbers-type 'relative)
+  (global-display-line-numbers-mode))
 
 (use-package abbrev
   :diminish abbrev-mode
@@ -192,17 +202,13 @@
   (setq modus-themes-italic-constructs t
 	modus-themes-bold-constructs nil
 	modus-themes-region '(bg-only no-extend))
-
-  (modus-themes-load-themes)
   :config
-  (modus-themes-load-vivendi))
+  (load-theme 'modus-vivendi t))
 
 ;; (use-package spacemacs-theme
 ;;   :defer t
 ;;   :init
 ;;   (load-theme 'spacemacs-dark t))
-
-;;(load-theme 'wheatgrass t)
 
 (use-package evil
   :ensure t
@@ -283,8 +289,8 @@
   ;; (lsp-ui-peek-always-show t)
   (lsp-ui-sideline-show-hover f))
 
-(use-package flymake-rust
-  :ensure t)
+;;(use-package flymake-rust
+;;  :ensure t)
 
 (use-package company
   :ensure t
@@ -312,7 +318,7 @@
 
 (add-hook 'elfeed-show-mode-hook
 	  (lambda ()
-	    (set-face-attribute 'variable-pitch (selected-frame) :font (font-spec :family "Terminus" :size 14))
+	    ;;(set-face-attribute 'variable-pitch (selected-frame) :font (font-spec :family "Terminus" :size 14))
 	    (setq fill-column 120)
 	    (setq elfeed-show-entry-switch #'my-show-elfeed)))
 
@@ -331,6 +337,9 @@
   (common-lisp-mode . rainbow-delimiters-mode)
   (clojure-mode . rainbow-delimiters-mode)
   (emacs-lisp-mode . rainbow-delimiters-mode))
+
+(use-package magit
+  :ensure t)
 
 ;; DO NOT EDIT BELOW
 

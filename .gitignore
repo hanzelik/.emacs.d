@@ -3,6 +3,7 @@
 
 auto-save-list/
 elpa/
+org-persist/
 projectile-bookmarks.eld
 transient/
 url/
